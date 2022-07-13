@@ -1,8 +1,9 @@
 <?php
 $mysqli = new mysqli("localhost", "root", "root", "dash_of_joy", 8889);
-$query = "SELECT `quote` FROM `quotes`";
+$query = "SELECT `quote`,`author` FROM `quotes`";
 $result = $mysqli->query($query);
 $quotes = $result->fetch_all(MYSQLI_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +21,7 @@ $quotes = $result->fetch_all(MYSQLI_ASSOC);
         <?php
         foreach ($quotes as $row) {
         ?>
-            <li><?= $row["quote"] ?></li>
+            <li>"<?= $row["quote"] ?>" &mdash;<?= $row["author"] ?></li>
         <?php
         }
         ?>
